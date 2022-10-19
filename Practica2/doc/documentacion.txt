@@ -1,0 +1,12 @@
+1.- Primer script: (nohead) Elimina la primera línea del fichero 'situacion-epidemiologica-coronavirus-en-castilla-y-leon.csv'.
+Con el comando d se borra la linea coincidente con la restricción, que en este caso es simplemente que la linea seleccionada es la primera, luego con > redirigimos el cambio del fichero a otro.
+
+
+2.- Segundo script: (pdata) Escribe los datos de casos_confirmados, nuevos_positivos, altas, fallecimientos de cada una de las nueve provincias en un fichero que lleva el nombre de la provincia en minúscula y la extensión '.dat'. Usará el fichero de salida de la orden del punto 1.
+Tenemos que buscar el patron conformado por los casos confirmados, nuevos positivos, altas y fallecimientos, para ello utilizamos la union de varios comandos. Entonces la manera de llevarlo a cabo es sustituyendo los campos de fecha y de provincia por un elemento vacio. Luego con los datos que nos quedan eliminaremos los no necesarios (ine y posicion) con la sustitución llevada a cabo mediante el segundo comando. Por último, vamos a escribir en un fichero al que nombraremos con el nombre de la provincia y la extension ".dat" mediante la bandera w.
+(Extra: He añadido como cabecera a todos los ficheros con la extension ".dat" CasosConfirmados, NuevosPositivos, Altas y Fallecimientos con la segunda instrucción sed).
+
+
+3.- Tercer script: (vaextrae) Utilizando el fichero de datos de población por municipios del INE ('población_municipìos_ine_2019.csv'), genera un listado de los municipios de la provincia de Valladolid con el siguiente formato (CSV, tres columnas): CodigoProvincia-CodigoMunicipio,  NombreMunicipio,  Poblacion.
+La primera instrucción sed es similar a la primera del anterior script pero con ligeras modificaciones. Una vez buscado el patron que hace que contenga la provincia unicamente de Valladolid, tenemos que sustituir el patron seleccionado por un - y también eliminar la población de hombres y mujeres sustituyendolo por vacío. De nuevo como anteriormente con la bandera  w guardamos en un fichero.
+Con la segunda instrucción sed hacemos lo mismo que se hizo de manera opcional en el script anterior, es decir, insertamos como cabezera los valores de CodigoProvincia-CodigoMunicipio, NombreMunicipio y Poblacion.
